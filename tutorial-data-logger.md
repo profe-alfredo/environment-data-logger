@@ -1,25 +1,29 @@
 # Tutorial para data logger
 
-## Configuramos la captura de datos inicial
+## Configuramos la captura de datos
 
-En la sección de **variables** seleccionamos **crear una variable** y le asignamos de nombre **capturar_datos**
-
-En el bloque de inicio, agregamos lo siguiente:
-1. Sacamos un bloque **Fijar a** de la **sección "Variables"** y fijamos la variable de nombre **capturar_datos** y con un valor de **falso** (en la pista esta en verdadero, cambia a falso)
-2. Añadimos el **bloque "configurar columnas"** de la **sección "Registro de datos"** (data logger)
-3. Agregamos 2 columnas más dando click en el **+** del bloque y añadimos los siguientes nombres:
+En el bloque de inicio, asignamos a la variable un falso, y definimos las columnas del bloque de configurar columnas con lo siguiente:
 Temperatura
 Sonido
 Luz
 
-**NOTA:** Para agregar más datos al bloque de datalogger se hace click en el **+** (debes agregar 2 campos más, para que quede como se ve en el ejemplo)
+Para agregar más datos se hace click en el **+**
 
 ```blocks
-let capturar_datos = true
+let capturar_datos = 0
 basic.showIcon(IconNames.Heart)
-datalogger.setColumnTitles(
-    "Temperatura",
-    "Sonido",
-    "Luz"
-    )
+datalogger.setColumnTitles("")
+```
+
+```blocks
+loops.everyInterval(60000, function () {
+    if (true) {
+        datalogger.log(
+        datalogger.createCV("", 0),
+        datalogger.createCV("", 0),
+        datalogger.createCV("", 0),
+        datalogger.createCV("", 0)
+        )
+    }
+})
 ```
