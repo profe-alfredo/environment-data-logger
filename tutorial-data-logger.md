@@ -14,16 +14,3 @@ let capturar_datos = 0
 basic.showIcon(IconNames.Heart)
 datalogger.setColumnTitles("")
 ```
-
-```blocks
-loops.everyInterval(60000, function () {
-    if (true) {
-        datalogger.log(
-        datalogger.createCV("", 0),
-        datalogger.createCV("", 0),
-        datalogger.createCV("", 0),
-        datalogger.createCV("", 0)
-        )
-    }
-})
-```
